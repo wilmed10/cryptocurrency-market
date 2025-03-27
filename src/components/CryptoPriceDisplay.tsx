@@ -6,6 +6,7 @@ export default function CryptoPriceDisplay() {
     
     const result = useCryptoStore((state) => state.result)
     const loading = useCryptoStore((state) => state.loading)
+    const addPortfolio = useCryptoStore((state) => state.addPortfolio)
     const hasResult = useMemo(() => Object.keys(result).length>0 , [result] )
     
     return (
@@ -25,6 +26,12 @@ export default function CryptoPriceDisplay() {
                             <p>Variacion del precio ultimas 24h: <span>{result.CHANGEPCT24HOUR}%</span></p>
                             <p>Ultima actualización: <span>{result.LASTUPDATE}</span></p>
                         </div>
+                    </div>
+                    <div className="btn">
+                        <button
+                            type="button"
+                            onClick={() => addPortfolio(result)}
+                        >Agregar al Portfolio</button>
                     </div>
                 </>
             )}

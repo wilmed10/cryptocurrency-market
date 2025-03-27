@@ -27,3 +27,13 @@ export const CryptoPriceSchema = z.object({
     CHANGEPCT24HOUR: z.string(),
     LASTUPDATE: z.string()
 })
+
+export const CryptoPricePortfolio = z.object({
+    CRYPTOCURRENCY: z.string(),
+    IMAGEURL: z.string(),
+    PRICE: z.string(),
+    HIGHDAY: z.string(),
+    LOWDAY: z.string(),
+    CHANGEPCT24HOUR: z.string(),
+    LASTUPDATE: z.string()
+})

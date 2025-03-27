@@ -13,6 +13,7 @@ export default function CryptoSearchForm() {
         cryptocurrency: ''
     })
     const [error, setError] = useState('')
+    const [isCurrencyFixed, setIsCurrencyFixed] = useState(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setPair({
@@ -28,6 +29,7 @@ export default function CryptoSearchForm() {
             return
         }
         setError('')
+        setIsCurrencyFixed(true)
 
         //consult API
         fetchData(pair)
@@ -47,6 +49,7 @@ export default function CryptoSearchForm() {
                     id="currency"
                     onChange={ handleChange}
                     value={pair.currency}
+                    disabled={isCurrencyFixed}
                 >
                     <option value="">--Seleccione--</option>
                     {currencies.map( currency => (

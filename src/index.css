@@ -18,10 +18,15 @@ body {
     font-size: 2rem;
 }
 
+h2 {
+    margin: 0;
+}
+
 .container {
-    max-width: 60rem;
+    max-width: 100rem;
     width: 95%;
     margin: 0 auto;
+    margin-bottom: 5rem;
 }
 
 .app-title {
@@ -36,12 +41,19 @@ body {
     font-size: 4.4rem;
 }
 
-.content {
+.cards {
+    display: flex;
+    gap: 2rem;
+}
+
+.content,
+.portfolio-card {
     margin-top: 5rem;
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     background-color: #f6f6f6;
     border-radius: 1rem;
     box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
+    width: 50%;
 }
 
 .form,
@@ -52,6 +64,7 @@ body {
 }
 .form label {
     color: var(--black);
+    font-weight: 700;
 }
 .form select {
     background-color: #ECEBEB;
@@ -62,7 +75,7 @@ body {
 }
 .form [type="submit"] {
     background-color: var(--primary);
-    color: var(--black);
+    color: var(--white);
     border: none;
     padding: 1rem;
     font-weight: 900;
@@ -80,6 +93,7 @@ body {
 }
 .result-wrapper h2 {
     text-align: center;
+    margin-bottom: 2rem;
 }
 .result {
     display: grid;
@@ -96,4 +110,56 @@ body {
 }
 .result span {
     font-weight: 700;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+.btn button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: background-color 300ms ease;
+}
+.btn button:hover {
+    background-color: #0CB387;
+    color: var(--white);
+}
+
+.portfolio-card {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.portfolio-card table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+.portfolio-card thead {
+    background-color: var(--primary);
+    color: var(--white);
+    text-align: left;
+}
+.portfolio-card th, 
+.portfolio-card td {
+    padding: 0.5rem;
+    border: none;
+    text-align: left;
+}
+.portfolio-card th {
+    border: 2px solid #f6f6f6;
+    font-size: 1.7rem;
+}
+.portfolio-card td {
+    font-size: 1.5rem;
+}
+.portfolio-card tbody tr:hover {
+    background-color: #E57373;
 }
