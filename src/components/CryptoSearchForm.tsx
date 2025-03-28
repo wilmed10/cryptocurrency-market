@@ -8,6 +8,7 @@ export default function CryptoSearchForm() {
 
     const cryptoCurrencies = useCryptoStore((state) => state.cryptoCurrencies)
     const fetchData = useCryptoStore((state) => state.fetchData)
+    const portfolio = useCryptoStore((state) => state.portfolio)
     const [pair, setPair] = useState<Pair>({
         currency: '',
         cryptocurrency: ''
@@ -22,6 +23,11 @@ export default function CryptoSearchForm() {
         })
     }
 
+    const cryptoCurrencyExist = (crypto: string) => {
+        const exists = portfolio.some((item) => item.CRYPTOCURRENCY === crypto)
+        return exists
+    };
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if(Object.values(pair).includes('')) {
@@ -29,6 +35,13 @@ export default function CryptoSearchForm() {
             return
         }
         setError('')
+        
+        const crypto = pair.cryptocurrency
+        if (cryptoCurrencyExist(crypto)) {
+            setError(`La criptomoneda ${crypto} ya está en el portafolio.`)
+            return;
+        }
+
         setIsCurrencyFixed(true)
 
         //consult API

@@ -14,6 +14,7 @@ type CryptoStore = {
     fetchCryptos: () => Promise<void>
     fetchData: (pair: Pair) => Promise<void>
     addPortfolio: (cryptoP: CryptoPrice) => Promise<void>
+    deleteCrypto: (index: number) => Promise<void>
 }
 
 export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
@@ -70,5 +71,11 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
                 addedToPortfolio: true
             };
         });
-    }
+    },
+
+    deleteCrypto: async (index) => {
+        set((state) => ({
+            portfolio: state.portfolio.filter( (_, i) => i !== index)
+        }))
+    },
 })))

@@ -143,7 +143,7 @@ h2 {
     table-layout: fixed;
 }
 .portfolio-card thead {
-    background-color: var(--primary);
+    background-color: #0CB387;
     color: var(--white);
     text-align: left;
 }
@@ -162,4 +162,51 @@ h2 {
 }
 .portfolio-card tbody tr:hover {
     background-color: #E57373;
+}
+.portfolio-card p {
+    font-size: 1.7rem;
+}
+.portfolio-card p span {
+    font-size: 2rem;
+    font-weight: 700;
+}
+span.green {
+    color: green;
+}
+span.red {
+    color: red;
+}
+
+@media (max-width: 640px) {
+    .cards {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .content,
+    .portfolio-card {
+        padding: 4rem 2rem;
+        background-color: #f6f6f6;
+        border-radius: 1rem;
+        box-shadow: rgba(0,0,0,0.1) 0px 4px 12px;
+        width: 90%;
+    }
+    .portfolio-card {
+        margin-top: 2rem;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {    
+    .cards {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .content,
+    .portfolio-card {
+        width: 70%;
+    }
+    .portfolio-card {
+        margin-top: 2rem;
+    }
 }
