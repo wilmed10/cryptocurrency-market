@@ -8,14 +8,27 @@ function App() {
 
   const fetchCryptos = useCryptoStore((state) => state.fetchCryptos)
   const addedToPortfolio = useCryptoStore((state) => state.addedToPortfolio)
+  const updatePortfolio = useCryptoStore((state) => state.updatePortfolio)
+  const portfolio = useCryptoStore((state) => state.portfolio)
+  const currency = useCryptoStore((state) => state.currency)
 
   useEffect(() => {
     fetchCryptos()
   }, [])
 
-  setTimeout(() => {
-    
-  }, 10000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      portfolio.forEach((coin) => {
+        updatePortfolio({
+          currency: currency,
+          cryptocurrency: coin.CRYPTOCURRENCY,
+        })
+      })
+    }, 60000)
+    console.log('update')
+    return () => clearInterval(interval)
+
+  }, [portfolio, currency, updatePortfolio]);
   
   return (
     <>

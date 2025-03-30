@@ -11,10 +11,12 @@ type CryptoStore = {
     currency: string
     cryptoCurrency: string
     addedToPortfolio: boolean
+    setCurrency: (pairCurrency: string) => Promise<void>
     fetchCryptos: () => Promise<void>
     fetchData: (pair: Pair) => Promise<void>
     addPortfolio: (cryptoP: CryptoPrice) => Promise<void>
     deleteCrypto: (index: number) => Promise<void>
+    updatePortfolio: (pair: Pair) => Promise<void>
 }
 
 export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
@@ -25,13 +27,20 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
 
     loading: false,
 
-    currency: '',
+    currency: localStorage.getItem('currency') || '',
     
     cryptoCurrency: '',
 
     portfolio: JSON.parse(localStorage.getItem('portfolio') || '[]'),
 
     addedToPortfolio: false,
+
+    setCurrency: async (pairCurrency) => {
+        set(() => ({
+            currency: pairCurrency
+        }))
+        localStorage.setItem('currency', pairCurrency);
+    },
 
     fetchCryptos: async () => {
         const cryptoCurrencies = await getCryptos()
@@ -43,7 +52,7 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
     fetchData: async (pair) => {
         set(() => ({
             loading: true,
-            addedToPortfolio: false
+            addedToPortfolio: false,
         }))
         const result = await fetchCurrentCryptoPrice(pair)
         set(() => ({
@@ -78,4 +87,15 @@ export const useCryptoStore = create<CryptoStore>()(devtools((set) => ({
             portfolio: state.portfolio.filter( (_, i) => i !== index)
         }))
     },
+
+    updatePortfolio: async (pair) => {
+        const update = await fetchCurrentCryptoPrice(pair)
+        set((state) => ({
+            portfolio: state.portfolio.map((coin) =>
+                coin.CRYPTOCURRENCY === pair.cryptocurrency
+                    ? { ...coin, ...update }
+                    : coin
+            )
+        }))
+    }
 })))

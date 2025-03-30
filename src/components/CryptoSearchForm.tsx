@@ -9,6 +9,7 @@ export default function CryptoSearchForm() {
     const cryptoCurrencies = useCryptoStore((state) => state.cryptoCurrencies)
     const fetchData = useCryptoStore((state) => state.fetchData)
     const portfolio = useCryptoStore((state) => state.portfolio)
+    const setCurrency = useCryptoStore((state) => state.setCurrency)
     const [pair, setPair] = useState<Pair>({
         currency: '',
         cryptocurrency: ''
@@ -43,6 +44,8 @@ export default function CryptoSearchForm() {
         }
 
         setIsCurrencyFixed(true)
+
+        setCurrency(pair.currency)
 
         //consult API
         fetchData(pair)
