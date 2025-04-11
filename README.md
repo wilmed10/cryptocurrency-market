@@ -6,20 +6,16 @@
 ![Status](https://img.shields.io/badge/Status-Deployed-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-A modern web app built with **React**, allowing users to get real-time prices of cryptocurrencies in **USD**, **Mexican Pesos**, and other currencies. This app also lets you **track your favorite coins**, see how your **portfolio value changes over time**, and persist your data using **LocalStorage**.
+A modern web app built with **React**, allowing users to get real-time prices of cryptocurrencies in **USD**, **EUR** ,**Pesos**, and other currencies. This app also lets you **track your favorite coins**, see how your **portfolio value changes over time**, and persist your data using **LocalStorage**.
 
 ![App Preview](https://wilmed10.github.io/portfolio/img/project-crypto2.png)
 
-> 💡 Bonus: Coming soon – historical data charts and coin comparison mode.
-
----
 
 ## 🌐 Live Demo
 
 👉 Try it here:  
 🔗 [https://wilmed10.github.io/cryptocurrency-market/](https://wilmed10.github.io/cryptocurrency-market/)
 
----
 
 ## ✅ Features
 
@@ -31,7 +27,6 @@ A modern web app built with **React**, allowing users to get real-time prices of
 - 💡 Intuitive and clean UI with responsive layout.
 - 🧠 Built with performance and scalability in mind.
 
----
 
 ## 🛠️ Technologies Used
 
@@ -44,7 +39,6 @@ A modern web app built with **React**, allowing users to get real-time prices of
 - 💾 LocalStorage – Persistence
 - 🎨 Tailwind CSS (optional styling layer)
 
----
 
 ## 🧠 What I Learned
 
@@ -54,10 +48,10 @@ A modern web app built with **React**, allowing users to get real-time prices of
 - Structuring scalable React applications using TypeScript.
 - Deploying apps with GitHub Pages for public access.
 
----
 
 ## 📁 Project Structure
 
+```bash
 cryptocurrency-market/
 ├── public/               # Static files (favicon, images, etc.)
 ├── src/
@@ -73,6 +67,7 @@ cryptocurrency-market/
 ├── package.json
 ├── tsconfig.json
 └── vite.config.ts
+```
 
 ---
 
